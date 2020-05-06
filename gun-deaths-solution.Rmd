@@ -1,10 +1,17 @@
 ---
 title: "Gun deaths"
 date: "`r lubridate::today()`"
-output: html_document
+output:
+  html_document:
+    toc: true
+    theme: cerulean
+    fig_width: 8
+    fig_height: 6
 ---
 
 ```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE, cache = TRUE)
+
 library(tidyverse)
 library(rcfss)
 
@@ -21,6 +28,8 @@ youth %>%
   ggplot(aes(age)) + 
   geom_freqpoly(binwidth = 1)
 ```
+
+The peak of the distribution is around 22 years of age, with a second smaller peak around 50 years of age.
 
 # Gun deaths by race
 

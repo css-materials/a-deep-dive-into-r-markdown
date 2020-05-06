@@ -17,3 +17,10 @@ nrow(gun_deaths) - nrow(youth)
 youth %>% 
   ggplot(aes(age)) + 
   geom_freqpoly(binwidth = 1)
+
+# graph the distribution of youth, by race
+youth %>%
+  ggplot(aes(fct_infreq(race) %>% fct_rev())) +
+  geom_bar() +
+  coord_flip() +
+  labs(x = "Victim race")
