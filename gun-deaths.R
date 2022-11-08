@@ -1,5 +1,4 @@
 # gun-deaths.R
-# 2017-02-01
 # Examine the distribution of age of victims in gun_deaths
 
 # load packages

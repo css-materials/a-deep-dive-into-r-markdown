@@ -1,16 +1,17 @@
 ---
 title: "Gun deaths"
-date: "`r lubridate::today()`"
+#date: "`r format (Sys.time(), ' %Y/%m/%d')`"
+#date: "`r format (Sys.time(), '%B %d, %Y')`"
 output:
   html_document:
     toc: true
     theme: cerulean
-    fig_width: 8
-    fig_height: 6
+    fig_width: 6
+    fig_height: 4
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, cache = TRUE)
+knitr::opts_chunk$set()
 
 library(tidyverse)
 library(rcis)
@@ -23,7 +24,7 @@ youth <- gun_deaths %>%
 
 We have data about `r nrow(gun_deaths)` individuals killed by guns. Only `r nrow(gun_deaths) - nrow(youth)` are older than 65. The distribution of the remainder is shown below:
 
-```{r youth-dist, echo = FALSE}
+```{r youth-dist}
 youth %>% 
   ggplot(aes(age)) + 
   geom_freqpoly(binwidth = 1)
@@ -35,7 +36,7 @@ The peak of the distribution is around 22 years of age, with a second smaller pe
 
 ```{r race-dist}
 youth %>%
-  ggplot(aes(fct_infreq(race) %>% fct_rev())) +
+  ggplot(aes(fct_infreq(race))) +
   geom_bar() +
   coord_flip() +
   labs(x = "Victim race")
